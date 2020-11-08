@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 const errorhandler = require('./error-handler');
 const validateBearerToken = require('./validate-api-token');
+const bookmarksRouter = require('./bookmarks/bookmarks-router');
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(helmet());
 app.use(cors());
 app.use(validateBearerToken);
 app.use(errorhandler)
+app.use(bookmarksRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello, bookmarker!');
